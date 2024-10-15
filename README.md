@@ -1,28 +1,37 @@
-# BCC Anti Cheat
+---
+icon: hand-wave
+---
+
+# Anti Cheat
+
+
+
 > A RedM anti-cheat and abuse prevention for Vorp
 
 ## Features
-- Spam click auto kick
-- **AFK** warning and auto kick
-- Server Network check and auto kick
-- Discord webhook integration
-  - Discord export API
-- Auto Cross Site Scripting (XSS) attack prevention on player connections
-- Resource Injection Prevention
-- Database Group check
-- Speed (Time) Check
-- Resource Version Check export APIs
-  - Github Release(tag) based check
-  - Github Version file based check
-- Player Bad Behavior Prevention export APIs for external scripts
-  - Profanity Filter for any string
-  - String XSS Check
-- Blacklist Option
-  - Anti Spawn Blacklist Object
-  - Anti Spawn Blacklist Weapon
-  - Anti Health Hack
+
+* Spam click auto kick
+* **AFK** warning and auto kick
+* Server Network check and auto kick
+* Discord webhook integration
+  * Discord export API
+* Auto Cross Site Scripting (XSS) attack prevention on player connections
+* Resource Injection Prevention
+* Database Group check
+* Speed (Time) Check
+* Resource Version Check export APIs
+  * Github Release(tag) based check
+  * Github Version file based check
+* Player Bad Behavior Prevention export APIs for external scripts
+  * Profanity Filter for any string
+  * String XSS Check
+* Blacklist Option
+  * Anti Spawn Blacklist Object
+  * Anti Spawn Blacklist Weapon
+  * Anti Health Hack
 
 ## How to install
+
 * Download this repo
 * Copy and paste `bcc-anticheat` folder to `resources/bcc-anticheat`
 * Add `ensure <YOUR_RESOURCE_NAME>` to your `server.cfg` file
@@ -36,15 +45,16 @@ This API will allow you to add a version check to your resource.
 
 #### Release(Tag) Based Checks
 
-_How to use [Github Releases](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)_
+_How to use_ [_Github Releases_](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)
 
-> Create a Release and tag  with the version number
+> Create a Release and tag with the version number
 
 _Correct: `1.0.0`_
 
 _Wrong: `v1.0.0`_
 
 > Add the following contents to your lua server
+
 ```lua
 local versioner = exports['bcc-anticheat'].versioner()
 local repo = 'https://github.com/VORPCORE/vorp_inventory-lua
@@ -54,6 +64,7 @@ versioner.checkRelease(GetCurrentResourceName(), repo)
 #### Version File Based Checks
 
 > Create a file called `version` with the following contents
+
 ```txt
 <1.3>
 - More awesome updates
@@ -63,8 +74,8 @@ versioner.checkRelease(GetCurrentResourceName(), repo)
 - My first Update
 ```
 
-
 > Add the following contents to your lua server
+
 ```lua
 local versioner = exports['bcc-anticheat'].versioner()
 local repo = 'https://github.com/VORPCORE/
@@ -85,6 +96,7 @@ print(cleaned)
 ```
 
 ### Add to Profanity Filter per script
+
 ```lua
 local mystring = 'What the crap is this mouse'
 local filter = '*****'
@@ -108,6 +120,7 @@ print(cleaned)
 This API allows you to easily add [Discord webhooks](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks) messages to your scripts.
 
 #### SendMessage
+
 ```lua
 local discord = exports['bcc-anticheat'].discord()
 
@@ -115,7 +128,9 @@ discord.sendMessage('webhookurl', 'My Script', 'https://cdn2.iconfinder.com/data
 ```
 
 #### embeds
-> Add custom [embeds](https://birdie0.github.io/discord-webhooks-guide/discord_webhook.html)
+
+> Add custom [embeds](https://birdie0.github.io/discord-webhooks-guide/discord\_webhook.html)
+
 ```lua
 local discord = exports['bcc-anticheat'].discord()
 
@@ -135,9 +150,10 @@ discord.sendMessage('webhookurl', 'My Script', 'https://cdn2.iconfinder.com/data
 })
 ```
 
-
 ### XSS String Check
-[Cross Site Scripting Prevention (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting)
+
+[Cross Site Scripting Prevention (XSS)](https://en.wikipedia.org/wiki/Cross-site\_scripting)
+
 ```lua
 local mystring = '<iframe src="badactor"></iframe>'
 
@@ -149,7 +165,8 @@ print(isxss)
 ```
 
 ## TODO:
-- Add other commonly exploited key spams
-- Detect Menus better
-- Multi-Framework support
-- Open to suggestions!
+
+* Add other commonly exploited key spams
+* Detect Menus better
+* Multi-Framework support
+* Open to suggestions!
